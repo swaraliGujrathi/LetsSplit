@@ -27,12 +27,12 @@ import org.w3c.dom.Text;
 public class newgrp extends AppCompatActivity {
 
     private EditText grpname;
-    private Button addPer, save;
+    private Button addPer, save,back;
     private final int Pick_contact = 1;
     private ImageView grpimg;
     private DatabaseReference myref;
     FirebaseUser firebaseUser;
-    String ConName, grpName,uid;
+    String ConName, grpName,uid,con;
     private TextView grp;
 
 
@@ -46,18 +46,34 @@ public class newgrp extends AppCompatActivity {
         save = (Button) findViewById(R.id.save_id);
         grpimg = findViewById(R.id.grpimg);
         grp = findViewById(R.id.grp1_id);
+        back = findViewById(R.id.back_id);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(newgrp.this,crtgrp.class);
+                startActivity(in);
+            }
+        });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+             //   Toast.makeText(newgrp.this,"You pressed save ",Toast.LENGTH_SHORT).show();
                 uid = firebaseUser.getUid();
                 grpName = grpname.getText().toString();
                 myref = FirebaseDatabase.getInstance().getReference("users").child(uid);
-                myref.push().setValue(grpName);
-
-
+                myref.child("Group").child(grpName).setValue(grpName);
+                /*int length = Toast.LENGTH_SHORT;
+                String msg = "Group created";
+                Toast toast = Toast.makeText(newgrp.this,msg,length);
+                toast.show();*/
                 grp.setText(grpName);
+                if(!grpName.isEmpty()){
+                    grpname.setVisibility(View.INVISIBLE);
+                    grpimg.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
@@ -80,37 +96,36 @@ public class newgrp extends AppCompatActivity {
         startActivityForResult(in, Pick_contact);
     }
 
-
     @Override
-    protected void onActivityResult(int reqCode, int ResultCode, Intent data) {
-        super.onActivityResult(reqCode, ResultCode, data);
+    protected void onActivityResult(int reqCode,int ResultCode, Intent data) {
+        super.onActivityResult(reqCode,ResultCode,data);
 
-        if (reqCode == Pick_contact) {
-            if (ResultCode == AppCompatActivity.RESULT_OK) {
-                Uri contactData = data.getData();
-                Cursor c = getContentResolver().query(contactData, null, null, null, null);
+        if (reqCode==Pick_contact)
+        {
+            if (ResultCode==AppCompatActivity.RESULT_OK)
+            {
+                Uri contactData=data.getData();
+                Cursor c=getContentResolver().query(contactData,null,null,null,null);
 
-                if (c !=null && c.moveToFirst()) {
-                   String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
-                   int columnindex  = c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-                   String con_no = c.getString(columnindex);
-
-                    Toast.makeText(newgrp.this, "You have picked : " + name + con_no, Toast.LENGTH_SHORT).show();
-                        setCon(name,con_no);
-                    //return name;
+                if (c.moveToFirst())
+                {
+                    String name=c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+                    //String Conc=c.getString(c.getColumnIndexOrThrow(ContactsContract))
+                    Toast.makeText(this,"You have picked " + name,Toast.LENGTH_LONG).show();
+                    setCon(name);
                 }
-                c.close();
             }
         }
-
     }
-    void setCon(String name,String Contact){
+
+    void setCon(String name){
          String contactnm = name;
-         String connum = Contact;
-        //this.ConName = name;
-        myref = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Group").child(grpName);
-        myref.push().setValue(contactnm,connum);
-     //   myref.child("Group").child(grpName).setValue(grpName);
+        //String connum = Contact;
+        this.ConName = name;
+        //this.con = Contact;
+        myref = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Group");
+
+        myref.child(grpName).push().setValue(ConName);
 
 
     }

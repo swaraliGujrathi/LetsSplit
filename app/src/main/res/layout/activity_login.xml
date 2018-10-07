@@ -10,12 +10,11 @@
 
     <EditText
         android:id="@+id/emaillogin_id"
-        android:layout_width="226dp"
+        android:layout_width="214dp"
         android:layout_height="wrap_content"
 
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="252dp"
+        android:layout_above="@+id/passwordlogin_id"
+        android:layout_alignStart="@+id/login_id"
         android:fontFamily="monospace"
         android:hint="email"
         android:singleLine="true" />
@@ -26,11 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="86dp"
+        android:layout_marginBottom="113dp"
         android:background="@drawable/round"
 
         android:text="login" />
-
 
 
     <TextView
@@ -39,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="54dp"
         android:fontFamily="serif"
         android:gravity="center"
         android:text="Don't have an Account? SignUp"
@@ -62,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="179dp"
+        android:layout_marginBottom="203dp"
         android:ems="10"
         android:fontFamily="monospace"
         android:hint="Password"
@@ -90,4 +88,21 @@
         android:layout_marginBottom="141dp"
         android:visibility="gone"
         />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
+        android:layout_alignTop="@+id/emaillogin_id"
+        android:layout_marginTop="0dp"
+        android:layout_toStartOf="@+id/emaillogin_id"
+        app:srcCompat="@drawable/ic_mail_outline_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="51dp"
+        android:layout_height="44dp"
+        android:layout_alignTop="@+id/passwordlogin_id"
+        android:layout_toStartOf="@+id/login_id"
+        app:srcCompat="@drawable/ic_security_black_24dp" />
 </RelativeLayout>

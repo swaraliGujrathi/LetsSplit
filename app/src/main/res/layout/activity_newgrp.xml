@@ -16,7 +16,7 @@
 
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="80dp"
         android:ems="10"
         android:gravity="center"
         android:hint="  Enter a group name"
@@ -30,7 +30,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/back_id"
             android:layout_width="37dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -64,11 +64,10 @@
 
     <ListView
         android:layout_width="338dp"
-        android:layout_height="283dp"
+        android:layout_height="346dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="28dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp" />
 
     <Button
         android:id="@+id/addP_id"
@@ -76,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="239dp"
+        android:layout_marginTop="144dp"
         android:background="@drawable/round"
         android:onClick="callContact"
         android:text="Add Person" />
@@ -94,21 +93,20 @@
         android:id="@+id/imageView10"
         android:layout_width="41dp"
         android:layout_height="51dp"
-        android:layout_alignBottom="@+id/addP_id"
         android:layout_alignStart="@+id/grpnm_id"
-        android:layout_marginStart="-1dp"
+        android:layout_alignTop="@+id/addP_id"
         android:src="@drawable/ic_person_add_black_24dp" />
 
     <TextView
         android:id="@+id/grp1_id"
-        android:layout_width="183dp"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="400dp"
+        android:layout_height="53dp"
+        android:layout_alignBottom="@+id/grpnm_id"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="153dp"
-        android:fontFamily="serif"
+        android:fontFamily="@font/autour_one"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
 
