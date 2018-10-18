@@ -138,7 +138,7 @@ public class signup extends AppCompatActivity {
                     {
                         firebaseUser = mAuth.getCurrentUser();
                         String uid = firebaseUser.getUid();
-                        ref.child(uid).setValue(user);
+                          ref.child(uid).setValue(user);
                             Intent intent = new Intent(signup.this,crtgrp.class);
                             startActivity(intent);
                     }
