@@ -84,7 +84,7 @@ public class login extends AppCompatActivity {
                 if(task.isSuccessful()){
 //                    String uid = firebaseUser.getUid();
                        // ref = FirebaseDatabase.getInstance().getReference("Data");
-                        Intent in = new Intent(login.this, crtgrp.class);
+                        Intent in = new Intent(login.this, GetStarted.class);
                         startActivity(in);
                 }else {
                     progressDialog.dismiss();

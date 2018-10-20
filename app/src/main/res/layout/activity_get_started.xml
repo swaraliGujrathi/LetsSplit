@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetStarted"
+    android:background="@drawable/theme">
+
+    <TextView
+        android:id="@+id/start_id"
+        android:layout_width="287dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="118dp"
+        android:fontFamily="@font/aref_ruqaa_bold"
+        android:gravity="center"
+        android:text="Lets get Started!!"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold|italic" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="206dp"
+        android:layout_height="197dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/split" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="B I L L     S P L I T"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="italic" />
+
+</RelativeLayout>

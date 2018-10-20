@@ -49,10 +49,12 @@ public class newgrp extends AppCompatActivity {
     String ConName, grpName, t,name,uid, con;
     private TextView grp;
 
+    public int result=0,total=0,count=0;
+
     String grpname, sresult, key;
     String[] personname = new String[10];
     String[] persondebt = new String[10];
-    private int count = 1, x = 0, cost, mtotbill;
+    private int  x = 0, cost, mtotbill;
     private String mcat, contactnm;
 
 
@@ -100,6 +102,8 @@ public class newgrp extends AppCompatActivity {
 
                 Intent in1 = new Intent(newgrp.this, ingrp.class);
                 in1.putExtra("gnm", grp.getText());
+                in1.putExtra("total",total);
+                in1.putExtra("result",result);
                 startActivity(in1);
 
             }
@@ -219,7 +223,7 @@ public class newgrp extends AppCompatActivity {
         final EditText totalbill = mview.findViewById(R.id.idtotbill);
         final EditText category = mview.findViewById(R.id.idcat);
         //   mtotbill =totalbill.getText().toString();
-       // mcat = category.getText().toString();
+        // mcat = category.getText().toString();
 
 
 
@@ -254,6 +258,11 @@ public class newgrp extends AppCompatActivity {
 
     }
     public void add(){
+
+        total=total+mtotbill;
+        count++;
+        result=total/count;
+
         setCon(name, t, mtotbill);
         Retrive();
     }

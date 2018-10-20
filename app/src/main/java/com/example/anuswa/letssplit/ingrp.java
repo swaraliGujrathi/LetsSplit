@@ -36,7 +36,7 @@ import static com.example.anuswa.letssplit.R.layout.activity_ingrp;
 
 public class ingrp extends AppCompatActivity {
 
-    private TextView grptxt;
+    private TextView grptxt,total_text,result1_text;
     String grpnm;
     FirebaseAuth mAuth;
     DatabaseReference grpref;
@@ -52,24 +52,41 @@ public class ingrp extends AppCompatActivity {
     String  grpname,sresult,key;
     String[] personname = new String[10];
     String[] persondebt = new String[10];
-    int count=1,x=0;
+    int count=1,x=0,total,result;
     String mtotbill,mcat,contactnm;
 
-    Button equal,next;
+    Button equal,next,split;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_ingrp);
+        Intent i = getIntent();
+        total = i.getExtras().getInt("total");
+        result = i.getExtras().getInt("result");
         grptxt = findViewById(R.id.grptxt_id);
         listgrp = findViewById(R.id.ingrplist_id);
-        equal = findViewById(R.id.equ_id);
-        next = findViewById(R.id.next_id);
+        //equal = findViewById(R.id.equ_id);
 
-        addmem = findViewById(R.id.addmem_id);
+        total_text = findViewById(R.id.total);
+        result1_text = findViewById(R.id.result);
+        split = findViewById(R.id.split_id);
 
+        split.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              /*  Uri uri = Uri.parse("smsto:8237469759");
+                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
+                it.putExtra("Text message","The SMS text ");
+                startActivity(it);*/
+            }
+        });
 
+        //addmem = findViewById(R.id.addmem_id);
+
+        total_text.setText("Total : Rs"+Integer.toString(total));
+        result1_text.setText("Per Person : Rs"+Integer.toString(result));
 
         grpref = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -86,27 +103,13 @@ public class ingrp extends AppCompatActivity {
             Retrive();
         }
 
-        addmem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callContact(v);
 
-            }
-        });
 
-        equal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(ingrp.this, Distribute.class);
-                startActivity(in);
-            }
-        });
-
-        next.setOnClickListener(new View.OnClickListener() {
+       /* next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ingrp.this);
+               /* AlertDialog.Builder builder = new AlertDialog.Builder(ingrp.this);
                 View mview = getLayoutInflater().inflate(R.layout.category_dialog, null);
                 final EditText totalbill = mview.findViewById(R.id.idtotbill);
                 final EditText category = mview.findViewById(R.id.idcat);
@@ -177,8 +180,10 @@ public class ingrp extends AppCompatActivity {
                 builder.setView(mview);
                 AlertDialog dialog=builder.create();
                 dialog.show();
+
+
             }
-        });
+        });*/
 
     }
 
@@ -215,7 +220,7 @@ public class ingrp extends AppCompatActivity {
         //String connum = Contact;
         this.ConName = name;
         name1 = name;
-       // MyList list = new MyList();
+        // MyList list = new MyList();
         //this.con = Contact;
         myref = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Group");
 

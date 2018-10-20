@@ -28,8 +28,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".ingrp" />
-
         <activity android:name=".Distribute" />
+        <activity android:name=".GetStarted" />
     </application>
 
 </manifest>

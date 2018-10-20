@@ -13,8 +13,9 @@
         android:layout_height="59dp"
 
 
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="86dp"
         android:layout_marginTop="79dp"
         android:background="@drawable/round"
         android:fontFamily="serif"
@@ -23,20 +24,19 @@
 
     <ListView
         android:id="@+id/lv_id"
-        android:layout_width="387dp"
-        android:layout_height="366dp"
+        android:layout_width="359dp"
+        android:layout_height="292dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="15dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="231dp"
         android:layout_height="34dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="166dp"
-        android:layout_toEndOf="@+id/imageView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="AVAILABLE GROUP"
@@ -78,7 +78,7 @@
         android:id="@+id/imageView5"
         android:layout_width="76dp"
         android:layout_height="61dp"
-        android:layout_alignStart="@+id/_dynamic"
+        android:layout_alignStart="@+id/lv_id"
         android:layout_alignTop="@+id/crtGrp_id"
         app:srcCompat="@drawable/icon"
         tools:ignore="UnknownId" />
