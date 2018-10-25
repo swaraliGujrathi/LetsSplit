@@ -28,6 +28,7 @@ public class login extends AppCompatActivity {
     private EditText emailloginno, passlogin;
     private Button login;
     private TextView newAcc;
+    private TextView forpass;
     private FirebaseAuth mAuth;
     //private ProgressBar progressBar2;
    // private DatabaseReference ref;
@@ -41,6 +42,7 @@ public class login extends AppCompatActivity {
         passlogin = findViewById(R.id.passwordlogin_id);
         login = findViewById(R.id.login_id);
         newAcc = findViewById(R.id.newAcc_id);
+        forpass = findViewById(R.id.ForPass_id);
         mAuth = FirebaseAuth.getInstance();
        // firebaseUser=mAuth.getCurrentUser();
         newAcc.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,14 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser(v);
+            }
+        });
+
+        forpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(login.this,Reset_pass.class);
+                startActivity(in);
             }
         });
     }

@@ -48,6 +48,7 @@ public class ingrp extends AppCompatActivity {
     private final int Pick_contact = 1;
     private Button addmem;
     private DatabaseReference myref;
+    private Button back;
 
     String  grpname,sresult,key;
     String[] personname = new String[10];
@@ -72,6 +73,15 @@ public class ingrp extends AppCompatActivity {
         total_text = findViewById(R.id.total);
         result1_text = findViewById(R.id.result);
         split = findViewById(R.id.split_id);
+        back = findViewById(R.id.bk_id);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(ingrp.this,crtgrp.class);
+                startActivity(in);
+            }
+        });
 
         split.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +95,8 @@ public class ingrp extends AppCompatActivity {
 
         //addmem = findViewById(R.id.addmem_id);
 
-        total_text.setText("Total : Rs"+Integer.toString(total));
-        result1_text.setText("Per Person : Rs"+Integer.toString(result));
+        total_text.setText("Total Amount is: Rs"+Integer.toString(total));
+        result1_text.setText("Per Person: Rs"+Integer.toString(result));
 
         grpref = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();

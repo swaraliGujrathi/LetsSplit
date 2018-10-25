@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="67dp"
         android:fontFamily="serif"
         android:gravity="center"
         android:text="Don't have an Account? SignUp"
@@ -105,4 +105,19 @@
         android:layout_alignTop="@+id/passwordlogin_id"
         android:layout_toStartOf="@+id/login_id"
         android:src="@drawable/ic_security_black_24dp" />
+
+    <TextView
+        android:id="@+id/ForPass_id"
+        android:layout_width="209dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
+        android:fontFamily="serif"
+        android:text="Forget Password??"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
 </RelativeLayout>

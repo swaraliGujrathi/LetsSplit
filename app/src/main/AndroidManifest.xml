@@ -30,6 +30,7 @@
         <activity android:name=".ingrp" />
         <activity android:name=".Distribute" />
         <activity android:name=".GetStarted" />
+        <activity android:name=".Reset_pass"></activity>
     </application>
 
 </manifest>
