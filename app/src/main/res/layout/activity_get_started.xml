@@ -13,13 +13,13 @@
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="118dp"
+        android:layout_marginBottom="75dp"
         android:fontFamily="@font/aref_ruqaa_bold"
         android:gravity="center"
         android:text="Lets get Started!!"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="28sp"
+        android:textSize="30sp"
         android:textStyle="bold|italic" />
 
     <ImageView
@@ -28,7 +28,7 @@
         android:layout_height="197dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="145dp"
         app:srcCompat="@drawable/split" />
 
     <TextView
@@ -43,6 +43,20 @@
         android:text="B I L L     S P L I T"
         android:textColor="@android:color/white"
         android:textSize="28sp"
-        android:textStyle="italic" />
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:fontFamily="serif"
+        android:text="Welcomes You!!!"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        android:textStyle="bold|italic" />
 
 </RelativeLayout>

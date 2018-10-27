@@ -59,12 +59,12 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="219dp"
-        android:layout_height="34dp"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/textView9"
         android:layout_centerHorizontal="true"
         android:fontFamily="serif"
-        android:text="Welcomes You!!!"
+        android:text="Is Here To Help You!!"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"

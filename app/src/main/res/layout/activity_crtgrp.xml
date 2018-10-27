@@ -76,10 +76,10 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="76dp"
-        android:layout_height="61dp"
-        android:layout_alignStart="@+id/lv_id"
+        android:layout_width="102dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/crtGrp_id"
-        app:srcCompat="@drawable/icon"
-        tools:ignore="UnknownId" />
+        app:srcCompat="@drawable/split" />
+
 </RelativeLayout>

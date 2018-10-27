@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,6 +51,8 @@ public class newgrp extends AppCompatActivity {
     private TextView grp;
 
     public int result=0,total=0,count=0;
+    public int[] numbers = new int[15];
+
 
     String grpname, sresult, key;
     String[] personname = new String[10];
@@ -168,6 +171,7 @@ public class newgrp extends AppCompatActivity {
                         String cNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                         // Toast.makeText(getApplicationContext(), cNumber, Toast.LENGTH_SHORT).show();
                         t = cNumber;
+
                     }
                     Toast.makeText(this, "You have picked " + name, Toast.LENGTH_LONG).show();
                     DialogAmt();

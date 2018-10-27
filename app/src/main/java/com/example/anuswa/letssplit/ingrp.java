@@ -11,6 +11,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,15 +49,15 @@ public class ingrp extends AppCompatActivity {
     private final int Pick_contact = 1;
     private Button addmem;
     private DatabaseReference myref;
-    private Button back;
-
+    private Button back,send;
+    public int var;
     String  grpname,sresult,key;
     String[] personname = new String[10];
     String[] persondebt = new String[10];
     int count=1,x=0,total,result;
     String mtotbill,mcat,contactnm;
 
-    Button equal,next,split;
+    Button equal,next;
 
 
     @Override
@@ -72,8 +73,10 @@ public class ingrp extends AppCompatActivity {
 
         total_text = findViewById(R.id.total);
         result1_text = findViewById(R.id.result);
-        split = findViewById(R.id.split_id);
+        send = findViewById(R.id.snd_id);
         back = findViewById(R.id.bk_id);
+
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,15 +86,24 @@ public class ingrp extends AppCompatActivity {
             }
         });
 
-        split.setOnClickListener(new View.OnClickListener() {
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  Uri uri = Uri.parse("smsto:8237469759");
+                Uri uri = Uri.parse("smsto:8237469759,smsto:7350399877");
+             //   Uri uri1 = Uri.parse("smsto:8237469759");
                 Intent it = new Intent(Intent.ACTION_SENDTO, uri);
                 it.putExtra("Text message","The SMS text ");
-                startActivity(it);*/
+                startActivity(it);
             }
         });
+        /*listgrp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Intent in = new Intent(ingrp.this,Report.class);
+                in.putExtra("perName",listgrp.getItemAtPosition(position).toString());
+                startActivity(in);
+            }
+        });*/
 
         //addmem = findViewById(R.id.addmem_id);
 
@@ -113,87 +125,6 @@ public class ingrp extends AppCompatActivity {
             Retrive();
         }
 
-
-
-       /* next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               /* AlertDialog.Builder builder = new AlertDialog.Builder(ingrp.this);
-                View mview = getLayoutInflater().inflate(R.layout.category_dialog, null);
-                final EditText totalbill = mview.findViewById(R.id.idtotbill);
-                final EditText category = mview.findViewById(R.id.idcat);
-                mtotbill =totalbill.getText().toString();
-                mcat=category.getText().toString();
-
-
-                builder.setPositiveButton("Unequally", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        mtotbill =totalbill.getText().toString();
-                        mcat=category.getText().toString();
-
-                        //Toast.makeText(MainActivity.this, "added successfully", Toast.LENGTH_SHORT).show();
-                        if (!mtotbill.isEmpty() && !mcat.isEmpty())
-                        {
-                            startActivity(new Intent(ingrp.this, Distribute.class).putExtra("gn", grpname).putExtra("Result", sresult).putExtra("contactname", contactnm));
-                        }
-                        else
-                        {
-                            Toast.makeText(ingrp.this, "please fill all fields", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
-                builder.setNegativeButton("Equally", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mtotbill =totalbill.getText().toString();
-                        mcat=category.getText().toString();
-
-
-                        if (!mtotbill.isEmpty() && !mcat.isEmpty())
-                        {
-                            x=x+1;
-                            Double result;
-                            try {
-                                double num = Double.parseDouble(mtotbill);
-                                result = num /count;
-                                sresult = String.valueOf(result);
-                                DisplayMembers();
-
-                                startActivity(new Intent(ingrp.this, ingrp.class));
-
-
-                            } catch (NumberFormatException e) {
-                            }
-                        }
-
-                        else
-                        {
-                            Toast.makeText(ingrp.this, "please fill all fields", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-
-
-
-
-                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                builder.setView(mview);
-                AlertDialog dialog=builder.create();
-                dialog.show();
-
-
-            }
-        });*/
 
     }
 
@@ -251,6 +182,7 @@ public class ingrp extends AppCompatActivity {
                 while (iterator.hasNext()) {
                     list = ((DataSnapshot)iterator.next()).getValue(MyList.class);
                     temp = list.getPerson() + "     "+list.getCost();
+                    var = list.getCost();
                     set.add(temp);
                 }
 

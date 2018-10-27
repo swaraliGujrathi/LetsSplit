@@ -13,9 +13,13 @@
         android:layout_height="44dp"
         android:layout_below="@+id/imageView6"
         android:layout_centerHorizontal="true"
+        android:fontFamily="serif"
         android:gravity="center"
         android:text="B I L L  S P L I T"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/name_id"
@@ -47,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/round"
         android:text="Signup"
         android:textSize="20sp" />
@@ -77,15 +81,6 @@
         android:layout_toStartOf="@+id/name_id"
         app:srcCompat="@drawable/ic_security_black_24dp" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="217dp"
-        android:layout_height="118dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/icon" />
-
     <EditText
         android:id="@+id/password_id"
         android:layout_width="wrap_content"
@@ -112,7 +107,7 @@
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="21dp"
         android:fontFamily="serif"
         android:gravity="center"
         android:text="Already have  an Account?"
@@ -145,5 +140,13 @@
         android:layout_below="@+id/email_id"
         android:layout_toStartOf="@+id/name_id"
         app:srcCompat="@drawable/ic_phone_android_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="292dp"
+        android:layout_height="105dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/split" />
 
 </RelativeLayout>
