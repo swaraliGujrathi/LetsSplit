@@ -1,15 +1,21 @@
 package com.example.anuswa.letssplit;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -89,25 +95,66 @@ public class ingrp extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("smsto:8237469759,smsto:7350399877");
-             //   Uri uri1 = Uri.parse("smsto:8237469759");
-                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
-                it.putExtra("Text message","The SMS text ");
-                startActivity(it);
+
+                String phoneNumber = "7350399877";
+                String phoneNumber1 = "8237469759";
+                String phoneNumber2 = "8237163437";
+                String smsBody = "Hello guys!! Our total expenses are :"+total+" & per person split is: "+result+". This message is to remind you to pay your fare.";
+
+                String SMS_SENT = "SMS_SENT";
+                String SMS_DELIVERED = "SMS_DELIVERED";
+
+                PendingIntent sentPendingIntent = PendingIntent.getBroadcast(ingrp.this, 0, new Intent(SMS_SENT), 0);
+                PendingIntent deliveredPendingIntent = PendingIntent.getBroadcast(ingrp.this, 0, new Intent(SMS_DELIVERED), 0);
+
+               registerReceiver(new BroadcastReceiver() {
+
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        switch (getResultCode()) {
+                            case Activity.RESULT_OK:
+                                Toast.makeText(context, "SMS sent successfully", Toast.LENGTH_SHORT).show();
+                                break;
+                            /*case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                                Toast.makeText(context, "Generic failure cause", Toast.LENGTH_SHORT).show();
+                                break;*/
+                            case SmsManager.RESULT_ERROR_NO_SERVICE:
+                                Toast.makeText(context, "Service is currently unavailable", Toast.LENGTH_SHORT).show();
+                                break;
+                            /*case SmsManager.RESULT_ERROR_NULL_PDU:
+                                Toast.makeText(context, "No pdu provided", Toast.LENGTH_SHORT).show();
+                                break;
+                            case SmsManager.RESULT_ERROR_RADIO_OFF:
+                                Toast.makeText(context, "Radio was explicitly turned off", Toast.LENGTH_SHORT).show();
+                                break;*/
+                        }
+                    }
+                }, new IntentFilter(SMS_SENT));
+
+// For when the SMS has been delivered
+                registerReceiver(new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        switch (getResultCode()) {
+                            case Activity.RESULT_OK:
+                                Toast.makeText(getBaseContext(), "SMS delivered", Toast.LENGTH_SHORT).show();
+                                break;
+                            case Activity.RESULT_CANCELED:
+                                Toast.makeText(getBaseContext(), "SMS not delivered", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                    }
+                }, new IntentFilter(SMS_DELIVERED));
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(phoneNumber, null, smsBody, sentPendingIntent, deliveredPendingIntent);
+                smsManager.sendTextMessage(phoneNumber1, null, smsBody, sentPendingIntent, deliveredPendingIntent);
+                smsManager.sendTextMessage(phoneNumber2, null, smsBody, sentPendingIntent, deliveredPendingIntent);
+
+
             }
         });
-        /*listgrp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent in = new Intent(ingrp.this,Report.class);
-                in.putExtra("perName",listgrp.getItemAtPosition(position).toString());
-                startActivity(in);
-            }
-        });*/
 
-        //addmem = findViewById(R.id.addmem_id);
-
-        total_text.setText("Total Amount is: Rs"+Integer.toString(total));
+        total_text.setText("Total Amt: Rs"+Integer.toString(total));
         result1_text.setText("Per Person: Rs"+Integer.toString(result));
 
         grpref = FirebaseDatabase.getInstance().getReference();
